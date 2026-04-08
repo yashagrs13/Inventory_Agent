@@ -345,9 +345,12 @@ SQLite database with 2 tables:
 ### Table: analysis_runs
 
 CREATE TABLE analysis_runs (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    timestamp TEXT NOT NULL,
-    input_filename TEXT NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,\
+    
+    timestamp TEXT NOT NULL,\
+    
+    input_filename TEXT NOT NULL,\
+    
     report_filename TEXT,
     status TEXT NOT NULL DEFAULT 'pending',
     agent_output TEXT,           -- Raw agent text output
