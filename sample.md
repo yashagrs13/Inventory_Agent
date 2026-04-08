@@ -1,4 +1,64 @@
-3\. Key Files and Their Responsibilities
+
+# Inventory_Agent - Comprehensive Codebase Analysis
+
+## 1. Project Overview & Purpose
+
+InventoryAIgent is an Agentic AI platform for automating inventory analysis and financial auditing for SMEs using Tally ERP. This is an MCA Final Year Project (20-credit) that demonstrates the application of Multi-Agent Systems (MAS) to enterprise resource planning.
+
+### Key Value Proposition
+- **Data Transformation:** Transforms raw Tally ERP exports (Excel files) into actionable business insights.
+- **Agentic AI:** Uses autonomous AI agents that collaborate to perform complex reasoning.
+- **Actionable Insights:** Provides natural language summaries instead of static Excel reports.
+- **Transparent Processing:** Shows the AI's "thought process" in real-time for transparency.
+
+---
+
+## 2. Architecture Overview
+
+```text
+┌─────────────────────────────────────────────────────────────────┐
+│                     FRONTEND (React + Vite)                     │
+│  ┌─────────┐ ┌───────────┐ ┌─────────┐ ┌──────┐ ┌───────┐       │
+│  │ Analyze │ │ Dashboard │ │ History │ │ Chat │ │ Audit │       │
+│  └────┬────┘ └─────┬─────┘ └────┬────┘ └───┬──┘ └───┬───┘       │
+└───────┼────────────┼────────────┼──────────┼────────┼───────────┘
+        │            │            │          │        │
+        │       REST API / SSE (Server-Sent Events)   │
+        │            │            │          │        │
+┌───────┼────────────┼────────────┼──────────┼────────┼───────────┐
+│       ▼            ▼            ▼          ▼        ▼           │
+│                     BACKEND (Flask)                             │
+│  ┌──────────────────────────────────────────────────────┐       │
+│  │  Routes: /upload, /results, /history, /query,        │       │
+│  │          /alerts, /forecast, /audit, /compare        │       │
+│  └──────────────────────────────────────────────────────┘       │
+│                           │                                     │
+│                     CrewAI Engine                               │
+│  ┌──────────────────────────────────────────────────────┐       │
+│  │           MULTI-AGENT ORCHESTRATION                  │       │
+│  │  ┌───────────────┐  ┌─────────────────┐              │       │
+│  │  │ Stock Analyst │──│ Business Reporter│              │       │
+│  │  └───────────────┘  └─────────────────┘              │       │
+│  │  ┌───────────────┐  ┌─────────────────┐              │       │
+│  │  │ Data Analyst  │  │ Forecast Agent  │              │       │
+│  │  └───────────────┘  └─────────────────┘              │       │
+│  │  ┌───────────────┐  ┌─────────────────┐              │       │
+│  │  │ Reorder Agent │  │ Audit Agent     │              │       │
+│  │  └───────────────┘  └─────────────────┘              │       │
+│  │  ┌───────────────┐                                   │       │
+│  │  │Comparison Agent│                                  │       │
+│  │  └───────────────┘                                   │       │
+│  └──────────────────────────────────────────────────────┘       │
+│                           │                                     │
+│  ┌──────────┐  ┌─────────────────────────────────────────┐      │
+│  │ SQLite   │  │              AGENT TOOLS                │      │
+│  │ Database │  │  - Inventory Analysis Tool              │      │
+│  │          │  │  - SQL Query Tool                       │      │
+│  │          │  │  - Forecast Tool (sklearn)              │      │
+│  │          │  │  - Email Alert Tool                     │      │
+│  │          │  │  - Ledger Audit Tool                    │      │
+│  └──────────┘  └─────────────────────────────────────────┘      │
+└─────────────────────────────────────────────────────────────────┘3\. Key Files and Their Responsibilities
 ----------------------------------------
 
 ### Backend Core Files
