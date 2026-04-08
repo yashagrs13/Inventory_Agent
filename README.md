@@ -433,28 +433,29 @@ From package.json:
 
 ### Environment Variables Required (.env)
 
-GROQ_API_KEY=<your-groq-api-key>      # Required for LLM
-FLASK_SECRET_KEY=<secret>             # Optional
-GMAIL_USER=<email>                    # Optional for email alerts
-GMAIL_APP_PASSWORD=<app-password>     # Optional for email alerts
+GROQ_API_KEY=<your-groq-api-key>      - Required for LLM
+FLASK_SECRET_KEY=<secret>             - Optional
+GMAIL_USER=<email>                    - Optional for email alerts
+GMAIL_APP_PASSWORD=<app-password>     - Optional for email alerts
 
 ### Running the Project
 
 #### Backend:
-
+```text
 cd /Users/yash/Inventory_Agent
 source .venv/bin/activate
 python app.py   # Starts Flask on port 5000
-
+```
 #### Frontend:
-
+```text
 cd /Users/yash/Inventory_Agent/frontend
 npm install     # If first time
 npm run dev     # Starts Vite dev server (usually port 5173)
-
+```
 #### Standalone CLI (without web):
-
+```text
 python main.py  # Runs CrewAI agents directly
+```
 ---
 
 ## 8. Data Flow Example
