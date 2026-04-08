@@ -344,13 +344,11 @@ SQLite database with 2 tables:
 
 ### Table: analysis_runs
 
+```text
 CREATE TABLE analysis_runs (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,\
-    
-    timestamp TEXT NOT NULL,\
-    
-    input_filename TEXT NOT NULL,\
-    
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    timestamp TEXT NOT NULL,
+    input_filename TEXT NOT NULL,
     report_filename TEXT,
     status TEXT NOT NULL DEFAULT 'pending',
     agent_output TEXT,           -- Raw agent text output
@@ -360,9 +358,11 @@ CREATE TABLE analysis_runs (
     critical_count INTEGER DEFAULT 0,
     total_items INTEGER DEFAULT 0
 );
+```
 
 ### Table: analysis_items
 
+```text
 CREATE TABLE analysis_items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     run_id INTEGER NOT NULL,
@@ -371,7 +371,7 @@ CREATE TABLE analysis_items (
     category TEXT NOT NULL,      -- 'out_of_stock', 'low_stock', 'critical'
     FOREIGN KEY (run_id) REFERENCES analysis_runs(id)
 );
-
+```
 ---
 
 ## 6. Frontend Structure (React + Vite)
