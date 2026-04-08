@@ -58,7 +58,9 @@ InventoryAIgent is an Agentic AI platform for automating inventory analysis and 
 │  │          │  │  - Email Alert Tool                     │      │
 │  │          │  │  - Ledger Audit Tool                    │      │
 │  └──────────┘  └─────────────────────────────────────────┘      │
-└─────────────────────────────────────────────────────────────────┘3\. Key Files and Their Responsibilities
+└─────────────────────────────────────────────────────────────────┘
+``` 
+3\. Key Files and Their Responsibilities
 ----------------------------------------
 
 ### Backend Core Files
