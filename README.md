@@ -189,25 +189,28 @@ This repository is aligned with an MCA final-year project focused on applying mu
 
 
 
-Inventory_Agent - Comprehensive Codebase Analysis
+# Inventory_Agent - Comprehensive Codebase Analysis
 
 ## 1. Project Overview & Purpose
 
 InventoryAIgent is an Agentic AI platform for automating inventory analysis and financial auditing for SMEs using Tally ERP. This is an MCA Final Year Project (20-credit) that demonstrates the application of Multi-Agent Systems (MAS) to enterprise resource planning.
-Key Value Proposition
-- Transforms raw Tally ERP exports (Excel files) into actionable business insights
-- Uses autonomous AI agents that collaborate to perform complex reasoning
-- Provides natural language summaries instead of static Excel reports
-- Shows the AI's "thought process" in real-time for transparency
+
+### Key Value Proposition
+- **Data Transformation:** Transforms raw Tally ERP exports (Excel files) into actionable business insights.
+- **Agentic AI:** Uses autonomous AI agents that collaborate to perform complex reasoning.
+- **Actionable Insights:** Provides natural language summaries instead of static Excel reports.
+- **Transparent Processing:** Shows the AI's "thought process" in real-time for transparency.
+
 ---
 
 ## 2. Architecture Overview
 
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                     FRONTEND (React + Vite)                     │
-│  ┌─────────┐ ┌───────────┐ ┌─────────┐ ┌──────┐ ┌───────┐      │
-│  │ Analyze │ │ Dashboard │ │ History │ │ Chat │ │ Audit │      │
-│  └────┬────┘ └─────┬─────┘ └────┬────┘ └───┬──┘ └───┬───┘      │
+│  ┌─────────┐ ┌───────────┐ ┌─────────┐ ┌──────┐ ┌───────┐       │
+│  │ Analyze │ │ Dashboard │ │ History │ │ Chat │ │ Audit │       │
+│  └────┬────┘ └─────┬─────┘ └────┬────┘ └───┬──┘ └───┬───┘       │
 └───────┼────────────┼────────────┼──────────┼────────┼───────────┘
         │            │            │          │        │
         │       REST API / SSE (Server-Sent Events)   │
@@ -223,18 +226,18 @@ Key Value Proposition
 │                     CrewAI Engine                               │
 │  ┌──────────────────────────────────────────────────────┐       │
 │  │           MULTI-AGENT ORCHESTRATION                  │       │
-│  │  ┌───────────────┐  ┌─────────────────┐             │       │
-│  │  │ Stock Analyst │──│ Business Reporter│             │       │
-│  │  └───────────────┘  └─────────────────┘             │       │
-│  │  ┌───────────────┐  ┌─────────────────┐             │       │
-│  │  │ Data Analyst  │  │ Forecast Agent  │             │       │
-│  │  └───────────────┘  └─────────────────┘             │       │
-│  │  ┌───────────────┐  ┌─────────────────┐             │       │
-│  │  │ Reorder Agent │  │ Audit Agent     │             │       │
-│  │  └───────────────┘  └─────────────────┘             │       │
-│  │  ┌───────────────┐                                  │       │
-│  │  │Comparison Agent│                                 │       │
-│  │  └───────────────┘                                  │       │
+│  │  ┌───────────────┐  ┌─────────────────┐              │       │
+│  │  │ Stock Analyst │──│ Business Reporter│              │       │
+│  │  └───────────────┘  └─────────────────┘              │       │
+│  │  ┌───────────────┐  ┌─────────────────┐              │       │
+│  │  │ Data Analyst  │  │ Forecast Agent  │              │       │
+│  │  └───────────────┘  └─────────────────┘              │       │
+│  │  ┌───────────────┐  ┌─────────────────┐              │       │
+│  │  │ Reorder Agent │  │ Audit Agent     │              │       │
+│  │  └───────────────┘  └─────────────────┘              │       │
+│  │  ┌───────────────┐                                   │       │
+│  │  │Comparison Agent│                                  │       │
+│  │  └───────────────┘                                   │       │
 │  └──────────────────────────────────────────────────────┘       │
 │                           │                                     │
 │  ┌──────────┐  ┌─────────────────────────────────────────┐      │
@@ -246,41 +249,56 @@ Key Value Proposition
 │  │          │  │  - Ledger Audit Tool                    │      │
 │  └──────────┘  └─────────────────────────────────────────┘      │
 └─────────────────────────────────────────────────────────────────┘
----
-
-## 3. Key Files and Their Responsibilities
+``` 
+3\. Key Files and Their Responsibilities
+----------------------------------------
 
 ### Backend Core Files
 
-File	Purpose
-/app.py	Flask application factory with CORS, blueprint registration, database initialization
-/main.py	Standalone CLI entry point to run CrewAI agents directly (without web interface)
-/src/agents.py	Defines all 7 AI agents with their roles, goals, backstories, and tools
-/src/tasks.py	Defines CrewAI tasks (analysis_task, reporting_task)
-/src/tools.py	Core inventory analysis tool using pandas to process Tally Excel exports
-/src/db.py	SQLite database operations (save runs, get history, compare runs)
-/src/llm_config.py	LLM configuration - uses Groq's LLaMA 3.1-8B (free tier) via CrewAI
-/src/stream_capture.py	Captures CrewAI verbose output and streams it as SSE events for real-time UI
+*   **/app.py**: Flask application factory with CORS, blueprint registration, database initialization
+    
+*   **/main.py**: Standalone CLI entry point to run CrewAI agents directly (without web interface)
+    
+*   **/src/agents.py**: Defines all 7 AI agents with their roles, goals, backstories, and tools
+    
+*   **/src/tasks.py**: Defines CrewAI tasks (analysis\_task, reporting\_task)
+    
+*   **/src/tools.py**: Core inventory analysis tool using pandas to process Tally Excel exports
+    
+*   **/src/db.py**: SQLite database operations (save runs, get history, compare runs)
+    
+*   **/src/llm\_config.py**: LLM configuration - uses Groq's LLaMA 3.1-8B (free tier) via CrewAI
+    
+*   **/src/stream\_capture.py**: Captures CrewAI verbose output and streams it as SSE events for real-time UI
+    
 
 ### Tool Modules
 
-File	Purpose
-/src/query_tool.py	Natural language to SQL translation for querying inventory database
-/src/forecast_tool.py	Linear regression forecasting using scikit-learn
-/src/email_tool.py	SMTP email alerting via Gmail
-/src/audit_tool.py	Financial ledger analysis for risk detection
+*   **/src/query\_tool.py**: Natural language to SQL translation for querying inventory database
+    
+*   **/src/forecast\_tool.py**: Linear regression forecasting using scikit-learn
+    
+*   **/src/email\_tool.py**: SMTP email alerting via Gmail
+    
+*   **/src/audit\_tool.py**: Financial ledger analysis for risk detection
+    
 
 ### Route Modules (/src/routes/)
 
-File	API Endpoints
-upload.py	POST /upload, POST /upload-stream (SSE)
-results.py	GET /results/<run_id>, GET /download/<filename>
-history.py	GET /history, GET /compare
-chat.py	POST /query
-alerts.py	POST /alerts/send
-forecast.py	GET /forecast, GET /forecast/top
-audit.py	POST /audit/upload
----
+*   **upload.py**: POST /upload, POST /upload-stream (SSE)
+    
+*   **results.py**: GET /results/, GET /download/
+    
+*   **history.py**: GET /history, GET /compare
+    
+*   **chat.py**: POST /query
+    
+*   **alerts.py**: POST /alerts/send
+    
+*   **forecast.py**: GET /forecast, GET /forecast/top
+    
+*   **audit.py**: POST /audit/upload
+
 
 ## 4. The "Agentic AI" Aspect - All 7 Agents
 
@@ -365,6 +383,7 @@ CREATE TABLE analysis_items (
 
 ### Component Architecture
 
+```text
 frontend/src/
 ├── main.jsx              # App entry point
 ├── App.jsx               # Router configuration with 5 routes
@@ -380,6 +399,7 @@ frontend/src/
     ├── HistoryPage.jsx   # Timeline of past analyses with comparison
     ├── ChatPage.jsx      # Natural language query interface
     └── AuditPage.jsx     # Ledger audit file upload
+```
 
 ### Key UI Features
 - StoryBoard Component: Visualizes the agent pipeline (Stock Analyst → Business Reporter → Ready)
@@ -463,19 +483,27 @@ This file serves as the project proposal/technical document for academic submiss
 - Research Questions: CrewAI vs Hierarchical agents, hallucination mitigation, data privacy
 ---
 
-## 10. Summary of Technologies Used
+10\. Summary of Technologies Used
+---------------------------------
 
-Layer	Technology
-LLM	Groq LLaMA 3.1-8B (via CrewAI + LiteLLM)
-Agent Framework	CrewAI (sequential process)
-Backend	Flask + Flask-CORS
-Database	SQLite
-Data Processing	Pandas + OpenPyXL
-ML/Forecasting	scikit-learn (LinearRegression)
-Frontend	React 19 + Vite + React Router
-Visualization	Recharts
-Real-time Streaming	Server-Sent Events (SSE)
-Email	smtplib (Gmail SMTP)
----
+*   **LLM:** Groq LLaMA 3.1-8B (via CrewAI + LiteLLM)
+    
+*   **Agent Framework:** CrewAI (sequential process)
+    
+*   **Backend:** Flask + Flask-CORS
+    
+*   **Database:** SQLite
+    
+*   **Data Processing:** Pandas + OpenPyXL
+    
+*   **ML/Forecasting:** scikit-learn (LinearRegression)
+    
+*   **Frontend:** React 19 + Vite + React Router
+    
+*   **Visualization:** Recharts
+    
+*   **Real-time Streaming:** Server-Sent Events (SSE)
+    
+*   **Email:** smtplib (Gmail SMTP)
 
 This is a well-architected academic project demonstrating modern AI engineering patterns: multi-agent collaboration, tool-augmented LLMs, real-time streaming, and hybrid AI+ML approaches.
