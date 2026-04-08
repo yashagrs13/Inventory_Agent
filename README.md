@@ -432,12 +432,12 @@ From package.json:
 - vite (dev server/bundler)
 
 ### Environment Variables Required (.env)
-
+```text
 GROQ_API_KEY=<your-groq-api-key>      - Required for LLM
 FLASK_SECRET_KEY=<secret>             - Optional
 GMAIL_USER=<email>                    - Optional for email alerts
 GMAIL_APP_PASSWORD=<app-password>     - Optional for email alerts
-
+```
 ### Running the Project
 
 #### Backend:
