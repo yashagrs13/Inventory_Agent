@@ -234,18 +234,18 @@ InventoryAIgent is an Agentic AI platform for automating inventory analysis and 
 │                     CrewAI Engine                               │
 │  ┌──────────────────────────────────────────────────────┐       │
 │  │           MULTI-AGENT ORCHESTRATION                  │       │
-│  │  ┌───────────────┐  ┌─────────────────┐              │       │
-│  │  │ Stock Analyst │──│ Business Reporter│              │       │
-│  │  └───────────────┘  └─────────────────┘              │       │
-│  │  ┌───────────────┐  ┌─────────────────┐              │       │
-│  │  │ Data Analyst  │  │ Forecast Agent  │              │       │
-│  │  └───────────────┘  └─────────────────┘              │       │
-│  │  ┌───────────────┐  ┌─────────────────┐              │       │
-│  │  │ Reorder Agent │  │ Audit Agent     │              │       │
-│  │  └───────────────┘  └─────────────────┘              │       │
-│  │  ┌───────────────┐                                   │       │
+│  │  ┌───────────────┐  ┌──────────────────┐             │       │
+│  │  │ Stock Analyst │──│ Business Reporter│             │       │
+│  │  └───────────────┘  └──────────────────┘             │       │
+│  │  ┌───────────────┐  ┌──────────────────┐             │       │
+│  │  │ Data Analyst  │  │  Forecast Agent  │             │       │
+│  │  └───────────────┘  └──────────────────┘             │       │
+│  │  ┌───────────────┐  ┌──────────────────┐             │       │
+│  │  │ Reorder Agent │  │   Audit Agent    │             │       │
+│  │  └───────────────┘  └──────────────────┘             │       │
+│  │  ┌────────────────┐                                  │       │
 │  │  │Comparison Agent│                                  │       │
-│  │  └───────────────┘                                   │       │
+│  │  └────────────────┘                                  │       │
 │  └──────────────────────────────────────────────────────┘       │
 │                           │                                     │
 │  ┌──────────┐  ┌─────────────────────────────────────────┐      │
@@ -262,49 +262,49 @@ InventoryAIgent is an Agentic AI platform for automating inventory analysis and 
 
 ### Backend Core Files
 
-*   **/app.py**: Flask application factory with CORS, blueprint registration, database initialization
+*   `**/app.py**`: Flask application factory with CORS, blueprint registration, database initialization
     
-*   **/main.py**: Standalone CLI entry point to run CrewAI agents directly (without web interface)
+*   `**/main.py**`: Standalone CLI entry point to run CrewAI agents directly (without web interface)
     
-*   **/src/agents.py**: Defines all 7 AI agents with their roles, goals, backstories, and tools
+*   `**/src/agents.py**`: Defines all 7 AI agents with their roles, goals, backstories, and tools
     
-*   **/src/tasks.py**: Defines CrewAI tasks (analysis\_task, reporting\_task)
+*   `**/src/tasks.py**`: Defines CrewAI tasks (analysis\_task, reporting\_task)
     
-*   **/src/tools.py**: Core inventory analysis tool using pandas to process Tally Excel exports
+*   `**/src/tools.py**`: Core inventory analysis tool using pandas to process Tally Excel exports
     
-*   **/src/db.py**: SQLite database operations (save runs, get history, compare runs)
+*   `**/src/db.py**`: SQLite database operations (save runs, get history, compare runs)
     
-*   **/src/llm\_config.py**: LLM configuration - uses Groq's LLaMA 3.1-8B (free tier) via CrewAI
+*   `**/src/llm\_config.py**`: LLM configuration - uses Groq's LLaMA 3.1-8B (free tier) via CrewAI
     
-*   **/src/stream\_capture.py**: Captures CrewAI verbose output and streams it as SSE events for real-time UI
+*   `**/src/stream\_capture.py**`: Captures CrewAI verbose output and streams it as SSE events for real-time UI
     
 
 ### Tool Modules
 
-*   **/src/query\_tool.py**: Natural language to SQL translation for querying inventory database
+*   `**/src/query\_tool.py**`: Natural language to SQL translation for querying inventory database
     
-*   **/src/forecast\_tool.py**: Linear regression forecasting using scikit-learn
+*   `**/src/forecast\_tool.py**`: Linear regression forecasting using scikit-learn
     
-*   **/src/email\_tool.py**: SMTP email alerting via Gmail
+*   `**/src/email\_tool.py**`: SMTP email alerting via Gmail
     
-*   **/src/audit\_tool.py**: Financial ledger analysis for risk detection
+*   `**/src/audit\_tool.py**`: Financial ledger analysis for risk detection
     
 
 ### Route Modules (/src/routes/)
 
-*   **upload.py**: POST /upload, POST /upload-stream (SSE)
+*   `**upload.py**`: POST /upload, POST /upload-stream (SSE)
     
-*   **results.py**: GET /results/, GET /download/
+*   `**results.py**`: GET /results/, GET /download/
     
-*   **history.py**: GET /history, GET /compare
+*   `**history.py**`: GET /history, GET /compare
     
-*   **chat.py**: POST /query
+*   `**chat.py**`: POST /query
     
-*   **alerts.py**: POST /alerts/send
+*   `**alerts.py**`: POST /alerts/send
     
-*   **forecast.py**: GET /forecast, GET /forecast/top
+*   `**forecast.py**`: GET /forecast, GET /forecast/top
     
-*   **audit.py**: POST /audit/upload
+*   `**audit.py**`: POST /audit/upload
 
 
 ## 4. The "Agentic AI" Aspect - All 7 Agents
