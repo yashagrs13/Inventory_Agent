@@ -1,4 +1,23 @@
-# Inventory_Agent
+<div align="center">
+
+# 📦 InventoryAIgent
+### Intelligent ERP Knowledge Assistant
+
+[![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Flask](https://img.shields.io/badge/Flask-black?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+
+Agentic AI platform for automating inventory analysis and financial auditing for SMEs using Tally ERP exports.
+
+[Overview](#overview) • [Quick Start](#quick-start) • [API Endpoints (High Level)](#api-endpoints-high-level) • [Database Schema](#database-schema) • [Tech Stack](#tech-stack) • [Setup](#setup) • [Run Locally](#run-locally) • [Typical Workflow](#typical-workflow) 
+
+[Inventory_Agent - Comprehensive Codebase Analysis](#inventory_agent---comprehensive-codebase-analysis) • [Project Overview & Purpose](#1-project-overview--purpose) • [Architecture Overview](#2-architecture-overview) • [Key Files and Their Responsibilities](#3-key-files-and-their-responsibilities) • [The "Agentic AI" Aspect - All 7 Agents](#4-the-agentic-ai-aspect---all-7-agents) • [Database Schema (inventory.db)](#5-database-schema-inventorydb) • [Frontend Structure (React + Vite)](#6-frontend-structure-react--vite) • [Dependencies & How to Run](#7-dependencies--how-to-run) • [Data Flow Example](#8-data-flow-example) • [Documentation Summary from AgenticAIProject.txt](#9-documentation-summary-from-agenticaiaprojecttxt) • [Summary of Technologies Used](#10-summary-of-technologies-used)
+
+</div>
+
+# Overview
 
 Agentic AI platform for inventory analysis and financial auditing, built for SMEs using Tally ERP exports.
 
@@ -176,18 +195,6 @@ python main.py
 5. Use history/compare to evaluate trends across runs
 6. Trigger alerts or run ledger audits as needed
 
-## Academic Context
-
-This repository is aligned with an MCA final-year project focused on applying multi-agent systems to accounting and inventory intelligence workflows.
-
-
-
-
-
-
-
-
-
 
 # Inventory_Agent - Comprehensive Codebase Analysis
 
@@ -250,8 +257,7 @@ InventoryAIgent is an Agentic AI platform for automating inventory analysis and 
 │  └──────────┘  └─────────────────────────────────────────┘      │
 └─────────────────────────────────────────────────────────────────┘
 ``` 
-3\. Key Files and Their Responsibilities
-----------------------------------------
+## 3. Key Files and Their Responsibilities
 
 ### Backend Core Files
 
@@ -487,7 +493,7 @@ This file serves as the project proposal/technical document for academic submiss
 - Research Questions: CrewAI vs Hierarchical agents, hallucination mitigation, data privacy
 ---
 
-10\. Summary of Technologies Used
+## 10. Summary of Technologies Used
 ---------------------------------
 
 *   **LLM:** Groq LLaMA 3.1-8B (via CrewAI + LiteLLM)
@@ -510,4 +516,4 @@ This file serves as the project proposal/technical document for academic submiss
     
 *   **Email:** smtplib (Gmail SMTP)
 
-This is a well-architected academic project demonstrating modern AI engineering patterns: multi-agent collaboration, tool-augmented LLMs, real-time streaming, and hybrid AI+ML approaches.
+
