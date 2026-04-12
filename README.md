@@ -44,7 +44,8 @@ Open:
 Required env var in `.env`:
 
 ```env
-GROQ_API_KEY=your_api_key
+GROQ_API_KEY=your_api_key 
+```
 ## Key Features
 
 - Upload stock summary files and run automated inventory analysis
