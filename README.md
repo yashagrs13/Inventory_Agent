@@ -274,20 +274,20 @@ InventoryAIgent is an Agentic AI platform for automating inventory analysis and 
     
 *   `/src/db.py`: SQLite database operations (save runs, get history, compare runs)
     
-*   `/src/llm\_config.py`: LLM configuration - uses Groq's LLaMA 3.1-8B (free tier) via CrewAI
+*   `/src/llm_config.py`: LLM configuration - uses Groq's LLaMA 3.1-8B (free tier) via CrewAI
     
-*   `/src/stream\_capture.py`: Captures CrewAI verbose output and streams it as SSE events for real-time UI
+*   `/src/stream_capture.py`: Captures CrewAI verbose output and streams it as SSE events for real-time UI
     
 
 ### Tool Modules
 
-*   `/src/query\_tool.py`: Natural language to SQL translation for querying inventory database
+*   `/src/query_tool.py`: Natural language to SQL translation for querying inventory database
     
-*   `/src/forecast\_tool.py`: Linear regression forecasting using scikit-learn
+*   `/src/forecast_tool.py`: Linear regression forecasting using scikit-learn
     
-*   `/src/email\_tool.py`: SMTP email alerting via Gmail
+*   `/src/email_tool.py`: SMTP email alerting via Gmail
     
-*   `/src/audit\_tool.py`: Financial ledger analysis for risk detection
+*   `/src/audit_tool.py`: Financial ledger analysis for risk detection
     
 
 ### Route Modules (/src/routes/)
