@@ -11,7 +11,7 @@
 
 Agentic AI platform for automating inventory analysis and financial auditing for SMEs using Tally ERP exports.
 
-[Overview](#overview) • [Quick Start](#quick-start) • [API Endpoints (High Level)](#api-endpoints-high-level) • [Database Schema](#database-schema) • [Tech Stack](#tech-stack) • [Setup](#setup) • [Run Locally](#run-locally) • [Typical Workflow](#typical-workflow) 
+[Overview](#overview) • [Quick Start](#quick-start) • [Key Features](#key-features) • [System Architecture](#system-architecture) • [AI Agents](#ai-agents) • [Repository Structure](#repository-structure) • [API Endpoints (High Level)](#api-endpoints-high-level) • [Database Schema](#database-schema) • [Tech Stack](#tech-stack) • [Setup](#setup) • [Run Locally](#run-locally) • [Typical Workflow](#typical-workflow) 
 
 [Inventory_Agent - Comprehensive Codebase Analysis](#inventory_agent---comprehensive-codebase-analysis) • [Project Overview & Purpose](#1-project-overview--purpose) • [Architecture Overview](#2-architecture-overview) • [Key Files and Their Responsibilities](#3-key-files-and-their-responsibilities) • [The "Agentic AI" Aspect - All 7 Agents](#4-the-agentic-ai-aspect---all-7-agents) • [Database Schema (inventory.db)](#5-database-schema-inventorydb) • [Frontend Structure (React + Vite)](#6-frontend-structure-react--vite) • [Dependencies & How to Run](#7-dependencies--how-to-run) • [Data Flow Example](#8-data-flow-example) • [Documentation Summary from AgenticAIProject.txt](#9-documentation-summary-from-agenticaiaprojecttxt) • [Summary of Technologies Used](#10-summary-of-technologies-used)
 
