@@ -1,0 +1,29 @@
+{
+  "name": "projects/3094262228024149943",
+  "projectId": "3094262228024149943",
+  "title": "Inventory AI Dashboard Overview",
+  "visibility": "PRIVATE",
+  "projectType": "TEXT_TO_UI_PRO",
+  "origin": "STITCH",
+  "deviceType": "DESKTOP",
+  "designTheme": {
+    "colorMode": "DARK",
+    "font": "INTER",
+    "roundness": "ROUND_EIGHT",
+    "customColor": "#137fec",
+    "saturation": 3
+  },
+  "screens": {
+    "settings": {
+      "id": "ac4d388d4a994ed8ac9be10984db4864",
+      "sourceScreen": "projects/3094262228024149943/screens/ac4d388d4a994ed8ac9be10984db4864",
+      "x": 0,
+      "y": 0,
+      "width": 780,
+      "height": 3238
+    }
+  },
+  "metadata": {
+    "userRole": "OWNER"
+  }
+}

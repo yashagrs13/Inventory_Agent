@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SmartStock AI Dashboard</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            sidebar: '#0f172a', /* Dark slate/blue for sidebar */
+            sidebarHover: '#1e293b',
+            primaryBlue: '#2563eb', /* Action button blue */
+            alertBg: '#e0f2fe', /* Light blue for AI alert */
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-overrides">
+    /* Custom scrollbar for better aesthetics */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1; 
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8; 
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans antialiased text-slate-800 h-screen flex overflow-hidden">
+<!-- BEGIN: Sidebar -->
+<aside aria-label="Sidebar Navigation" class="w-64 bg-sidebar text-white flex-shrink-0 hidden md:flex flex-col h-full">
+<!-- Logo Section -->
+<div class="h-16 flex items-center px-6 border-b border-gray-800" data-purpose="logo">
+<!-- Placeholder logo icon -->
+<img alt="SmartStock AI Logo" class="w-8 h-8 mr-3 rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV-KOeR8FCUsFCfDiJpIlMM6j3zX0svl-cMYJ8CSX0bL1ME8BLxNogBZp-aqdzEeqRvSgZIWeZfFGfT25td3_saVJWMZj4mjeIgM-BuKN_DeU0fmiBl5ucT9iIMFUWy-fPIOzazWmVIauLZrC6ZMdd6BdyDUYQXcsM8Tz6hOg_Gu1--Lh3J6TKpIRvl2qmAlpV_Xv7DfObJyTDMlDA0YUuPguSjJ5VQf-7OcBWUzKbsfsyLSGPmXydPi-dEQoUBxaV8uTsCt5TOt8"/>
+<span class="text-lg font-bold tracking-wide">SmartStock <span class="text-blue-400">AI</span></span>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 py-6 px-3 space-y-1 overflow-y-auto">
+<a class="flex items-center px-4 py-3 text-slate-400 hover:bg-sidebarHover hover:text-white rounded-md transition-colors group" href="#">
+<svg class="h-5 w-5 mr-3 group-hover:text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+        Dashboard
+      </a>
+<!-- Active Link Style -->
+<a class="flex items-center px-4 py-3 text-white rounded-md transition-colors shadow-sm bg-blue-600" href="#">
+<svg class="h-5 w-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+        Inventory
+      </a>
+<a class="flex items-center px-4 py-3 text-slate-400 hover:bg-sidebarHover hover:text-white rounded-md transition-colors group" href="#">
+<svg class="h-5 w-5 mr-3 group-hover:text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+        Orders
+      </a>
+<a class="flex items-center px-4 py-3 text-slate-400 hover:bg-sidebarHover hover:text-white rounded-md transition-colors group" href="#">
+<svg class="h-5 w-5 mr-3 group-hover:text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+        Reports
+      </a>
+<a class="flex items-center px-4 py-3 text-slate-400 hover:bg-sidebarHover hover:text-white rounded-md transition-colors group" href="#">
+<svg class="h-5 w-5 mr-3 group-hover:text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+        AI Insights
+      </a>
+<a class="flex items-center px-4 py-3 text-slate-400 hover:bg-sidebarHover hover:text-white rounded-md transition-colors group" href="#">
+<svg class="h-5 w-5 mr-3 group-hover:text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+        Settings
+      </a>
+</nav>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- BEGIN: Top Header -->
+<header class="bg-white h-16 flex items-center justify-between px-6 border-b border-gray-200" data-purpose="top-navigation">
+<!-- Mobile Menu Toggle (Hidden on Desktop) -->
+<button class="md:hidden text-gray-500 focus:outline-none">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<!-- Right Side: User Profile -->
+<div class="ml-auto flex items-center space-x-3 cursor-pointer">
+<img alt="User Avatar" class="h-9 w-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwDsgg7gBvfy1GYD7KtafoEn-43ruRMVksa8o1E1qgCC8Zxz516_QTPUoMFDHyYxRWEK3s9u3lawr4pM-m0CuRxarLV16xF-TF7YJxrXO6UMsgB5kQ-aMAvtsqy4EBvmc-cAA0KDKK-ZZUjqoTlvj6lb9fLKeRkh1uJEFmxYVD6T8lDfrtIH2fKWgDH93w7nSXHmTQUv2KKMahl4G1_FDhd7e43qyd_QN5CqaO7fPdbjcIqyjvQ-ePJOY1mgtciJKc6O3aCCbjMn0"/>
+<div class="flex items-center text-gray-700 hover:text-gray-900"><span class="font-medium text-sm mr-1">User Profile</span>
+<svg class="h-4 w-4 text-gray-500" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg></div>
+</div>
+</header>
+<!-- END: Top Header -->
+<!-- BEGIN: Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 md:p-8">
+<!-- BEGIN: AI Insights Alert -->
+<section aria-label="AI Insights" class="bg-alertBg rounded-xl p-5 mb-8 border border-blue-100 shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center gap-4">
+<!-- Icon and Text Container -->
+<div class="flex md:items-center gap-3 flex-1 items-center">
+<!-- Brain Icon Placeholder -->
+<div class="flex-shrink-0">
+<img alt="AI Brain Icon" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYCS_PnbNQ5AkzidmOoh8KIGYTqIE8hSudHlhqd7B5E4Az1l6X896VPiblaLHBlqADFbxdNYkyfQUvl0YjszWgVbp3T4Rlz3pLWz5RLnFbMyM-bAs5zMAIv9bEE5j2na56mJr8JQu37ZcyBmFoswOEcPiSQyQJhc4D1X1l4QAV_bDoQVb6LfCTnImuJW1BELDI1sDDIoUp5rFVzhC8vGW6iSszr00RuPpj6Ortv_vsV2FwDvJhYpD57T2JHN76I1cDNX7BUfAXAi0"/>
+</div>
+<p class="text-slate-800 text-sm md:text-base">
+<span class="font-bold text-slate-900">AI Insights:</span> You have 5 items running low on stock; would you like me to create a draft purchase order?
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-3 md:ml-auto">
+<button class="bg-primaryBlue hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md text-sm transition-colors shadow-sm">
+              Create Purchase Order
+            </button>
+<button class="bg-transparent border border-gray-300 text-gray-600 hover:bg-white hover:text-gray-800 font-medium py-2 px-4 rounded-md text-sm transition-colors">
+              Dismiss
+            </button>
+</div>
+</div>
+</section>
+<!-- END: AI Insights Alert -->
+<!-- BEGIN: Stock Summary Table -->
+<section aria-label="Stock Summary" class="bg-white rounded-xl shadow-sm border border-gray-200">
+<!-- Table Header Title -->
+<div class="px-6 py-5 border-b border-gray-100">
+<h2 class="text-lg font-bold text-slate-900">AI Stock Summary Details</h2>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50/50 border-b border-gray-100 text-xs uppercase text-gray-500 font-semibold tracking-wider">
+<th class="px-6 py-4 cursor-pointer hover:text-gray-700">
+<div class="flex items-center gap-1">Item Name <svg class="h-3 w-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg></div>
+</th>
+<th class="px-6 py-4 cursor-pointer hover:text-gray-700">
+<div class="flex items-center gap-1">SKU <svg class="h-3 w-3 opacity-50" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg></div>
+</th>
+<th class="px-6 py-4 cursor-pointer hover:text-gray-700">
+<div class="flex items-center gap-1">Category <svg class="h-3 w-3 opacity-50" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg></div>
+</th>
+<th class="px-6 py-4 cursor-pointer hover:text-gray-700">
+<div class="flex items-center gap-1">Stock Level <svg class="h-3 w-3 opacity-50" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg></div>
+</th>
+<th class="px-6 py-4 cursor-pointer hover:text-gray-700">
+<div class="flex items-center gap-1">Status <svg class="h-3 w-3 opacity-50" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg></div>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 text-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-gray-900">Wireless Mouse</td>
+<td class="px-6 py-4 text-gray-600">SKU-WM01</td>
+<td class="px-6 py-4 text-gray-600">Electronics</td>
+<td class="px-6 py-4 text-gray-600">120</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    In Stock
+                  </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-gray-900">Laptop Stand</td>
+<td class="px-6 py-4 text-gray-600">SKU-LS05</td>
+<td class="px-6 py-4 text-gray-600">Office</td>
+<td class="px-6 py-4 text-gray-600">5</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-600">
+                    Low Stock
+                  </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-gray-900">Ergonomic Keyboard</td>
+<td class="px-6 py-4 text-gray-600">SKU-EK12</td>
+<td class="px-6 py-4 text-gray-600">Electronics</td>
+<td class="px-6 py-4 text-gray-600">8</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-600">
+                    Low Stock
+                  </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-gray-900">Desk Organizer</td>
+<td class="px-6 py-4 text-gray-600">SKU-DO03</td>
+<td class="px-6 py-4 text-gray-600">Office</td>
+<td class="px-6 py-4 text-gray-600">45</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    In Stock
+                  </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-gray-900">Coffee Maker</td>
+<td class="px-6 py-4 text-gray-600">SKU-CM99</td>
+<td class="px-6 py-4 text-gray-600">Kitchen</td>
+<td class="px-6 py-4 text-gray-600">2</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-600">
+                    Low Stock
+                  </span>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-gray-50 transition-colors">
+<td class="px-6 py-4 font-medium text-gray-900">Monitor Arm</td>
+<td class="px-6 py-4 text-gray-600">SKU-MA20</td>
+<td class="px-6 py-4 text-gray-600">Electronics</td>
+<td class="px-6 py-4 text-gray-600">0</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-600">
+                    Out of Stock
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- END: Stock Summary Table -->
+</div>
+<!-- END: Scrollable Content -->
+</main>
+<!-- END: Main Content Area -->
+</body></html>
