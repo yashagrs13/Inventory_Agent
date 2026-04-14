@@ -16,7 +16,7 @@ function Sidebar() {
       <div className="sidebar-logo">
         <BarChart2 size={28} />
         <span className="sidebar-logo-text">
-          Inventory<span className="accent">AI</span>gent
+          AGENT-<span className="accent">ERP</span>
         </span>
       </div>
 
