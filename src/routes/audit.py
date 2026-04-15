@@ -35,7 +35,7 @@ def upload_ledger():
                 Use the 'Ledger Audit Tool' to analyze it. 
                 Based on the tool's output, write a detailed executive summary for the business owner.
                 
-                CRITICAL INSTRUCTION: You MUST explicitly list the exact integer amounts (e.g., "$250,000") 
+                CRITICAL INSTRUCTION: You MUST explicitly list the exact integer amounts (e.g., "Rs. 250,000") 
                 and descriptions provided by the tool for any high-value transactions or anomalies found. 
                 Do not just say "there are high value transactions"—show the user the exact item name, date, 
                 and the exact financial value causing the anomaly.
